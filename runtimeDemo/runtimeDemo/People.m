@@ -12,6 +12,28 @@
 
 @implementation People
 
+
+
+//http://upload.ianisme.com/wp-content/uploads/2016/01/objective-runtime-6.png
+
+//动态添加方法
+
++ (BOOL)resolveInstanceMethod:(SEL)sel
+{
+    if ([NSStringFromSelector(sel) isEqualToString:@"sing"]) {
+        class_addMethod(self, sel, (IMP)otherSing, "v@:");
+        
+        return YES;
+    }
+    
+    return [super resolveInstanceMethod: sel];
+}
+
+void otherSing(id self,SEL cmd){
+    
+    NSLog(@"hello");
+}
+
 //归档和解挡
 
 - (void)encodeWithCoder:(NSCoder *)aCoder

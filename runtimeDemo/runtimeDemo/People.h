@@ -15,4 +15,6 @@
 @property (nonatomic,copy) NSString *occupation;//职业
 @property (nonatomic,copy) NSString *nationality;//国籍
 
+- (void)sing;
+
 @end
